@@ -2,7 +2,7 @@ local RANGE = 0.6
 
 minetest.register_node("trashcan:trashcan", {
 description = "Trash can",
-tile_images = {"default_steel_block.png","default_steel_block.png","trashcan.png"},
+tiles = {"default_steel_block.png","default_steel_block.png","trashcan.png"},
 groups = {snappy=1,bendy=2,cracky=1},
 sounds = default_stone_sounds,
 

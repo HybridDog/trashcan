@@ -11,13 +11,13 @@ minetest.register_node("trashcan:trashcan", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-				{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-				{-0.5, -0.5, -0.5, -0.4375, 0.5, 0.5},
-				{-0.5, -0.5, -0.5, 0.5, 0.5, -0.4375},
-				{-0.5, -0.5, 0.4375, 0.5, 0.5, 0.5},
-				{0.4375, -0.5, -0.5, 0.5, 0.5, 0.5},
-			},
+			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
+			{-0.5, -0.5, -0.5, -0.4375, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, 0.5, 0.5, -0.4375},
+			{-0.5, -0.5, 0.4375, 0.5, 0.5, 0.5},
+			{0.4375, -0.5, -0.5, 0.5, 0.5, 0.5},
 		},
+	},
 	on_punch = function(pos, node, puncher)
 		if node.name == "trashcan:trashcan" then --why should this be checked???
 			local objs = minetest.env:get_objects_inside_radius({x=pos.x, y=pos.y+0.3, z=pos.z}, RANGE)

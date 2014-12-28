@@ -26,7 +26,7 @@ minetest.register_node("trashcan:trashcan", {
 				obj:remove()
 				minetest.sound_play("trashcan", {pos = pos, gain = 1.0, max_hear_distance = 10})
 			end
-			print("[trashcan] someone used a trashcan at ("..pos.x..", "..pos.y..", "..pos.z..")")
+			minetest.log("info", "[trashcan] someone used a trashcan at ("..pos.x..", "..pos.y..", "..pos.z..")")
 		end
 	end,
 	on_construct = function(pos)
@@ -44,4 +44,4 @@ minetest.register_craft({
 	}
 })
 
-print(string.format("[trashcan] loaded after ca. %.2fs", os.clock() - load_time_start))
+minetest.log("info", string.format("[trashcan] loaded after ca. %.2fs", os.clock() - load_time_start))

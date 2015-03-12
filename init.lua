@@ -11,11 +11,11 @@ minetest.register_node("trashcan:trashcan", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, -0.4375, 0.5},
-			{-0.5, -0.5, -0.5, -0.4375, 0.5, 0.5},
-			{-0.5, -0.5, -0.5, 0.5, 0.5, -0.4375},
-			{-0.5, -0.5, 0.4375, 0.5, 0.5, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, 0.5, -7/16, 0.5},
+			{-0.5, -0.5, -0.5, -7/16, 0.5, 0.5},
+			{-0.5, -0.5, -0.5, 0.5, 0.5, -7/16},
+			{-0.5, -0.5, 7/16, 0.5, 0.5, 0.5},
+			{7/16, -0.5, -0.5, 0.5, 0.5, 0.5},
 		},
 	},
 	on_punch = function(pos, node, puncher)
@@ -24,14 +24,14 @@ minetest.register_node("trashcan:trashcan", {
 			minetest.chat_send_player(puncher:get_player_name(), 'Garbage removed!')
 			for _, obj in pairs(objs) do
 				obj:remove()
-				minetest.sound_play("trashcan", {pos = pos, gain = 1.0, max_hear_distance = 10})
+				minetest.sound_play("trashcan", {pos = pos, max_hear_distance = 10})
 			end
 			minetest.log("info", "[trashcan] someone used a trashcan at ("..pos.x..", "..pos.y..", "..pos.z..")")
 		end
 	end,
 	on_construct = function(pos)
 		local meta = minetest.env:get_meta(pos)
-		meta:set_string("infotext","Trash can")
+		meta:set_string("infotext", "Trash can")
 	end,
 })
 

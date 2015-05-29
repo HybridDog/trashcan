@@ -20,7 +20,7 @@ minetest.register_node("trashcan:trashcan", {
 	},
 	on_punch = function(pos, node, puncher)
 		if node.name == "trashcan:trashcan" then --why should this be checked???
-			local objs = minetest.env:get_objects_inside_radius({x=pos.x, y=pos.y+0.3, z=pos.z}, RANGE)
+			local objs = minetest.get_objects_inside_radius({x=pos.x, y=pos.y+0.3, z=pos.z}, RANGE)
 			minetest.chat_send_player(puncher:get_player_name(), 'Garbage removed!')
 			for _, obj in pairs(objs) do
 				obj:remove()
@@ -30,7 +30,7 @@ minetest.register_node("trashcan:trashcan", {
 		end
 	end,
 	on_construct = function(pos)
-		local meta = minetest.env:get_meta(pos)
+		local meta = minetest.get_meta(pos)
 		meta:set_string("infotext", "Trash can")
 	end,
 })

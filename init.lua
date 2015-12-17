@@ -18,13 +18,14 @@ minetest.register_node("trashcan:trashcan", {
 			{7/16, -0.5, -0.5, 0.5, 0.5, 0.5},
 		},
 	},
-	on_punch = function(pos, _, puncher)
-		minetest.chat_send_player(puncher:get_player_name(), "Garbage removed!")
+	on_punch = function(pos, _, player)
+		local pname = player:get_player_name()
+		minetest.chat_send_player(pname, "Garbage removed!")
 		for _,obj in pairs(minetest.get_objects_inside_radius({x=pos.x, y=pos.y+0.3, z=pos.z}, RANGE)) do
 			obj:remove()
 			minetest.sound_play("trashcan", {pos = pos, max_hear_distance = 10})
 		end
-		minetest.log("info", "[trashcan] someone used a trashcan at ("..pos.x.." | "..pos.y.." | "..pos.z..")")
+		minetest.log("info", "[trashcan] "..pname.." used a trashcan at ("..pos.x.." | "..pos.y.." | "..pos.z..")")
 	end,
 	on_construct = function(pos)
 		minetest.get_meta(pos):set_string("infotext", "Trash can")
